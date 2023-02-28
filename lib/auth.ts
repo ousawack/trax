@@ -23,6 +23,10 @@ export const validateRoute = (handler) => {
         res.json({ error: "Not Authorized" });
         return;
       }
+
+      console.log("auth.ts");
+      console.log("Token:", token);
+
       return handler(req, res, user);
     }
 
