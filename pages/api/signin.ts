@@ -28,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.setHeader(
       "Set-Cookie",
-      cookie.serialize("TRAX_ACCES_TOKEN", token, {
+      cookie.serialize("TRAX_ACCESS_TOKEN", token, {
         httpOnly: true,
         maxAge: 8 * 60 * 60,
         path: "/",
@@ -36,6 +36,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         secure: process.env.NODE_ENV === "production",
       })
     );
+
+    console.log("signin.ts");
+    console.log("Token:", token);
 
     res.json(user);
   } else {
