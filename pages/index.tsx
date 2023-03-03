@@ -1,3 +1,4 @@
+import { Box, Flex, Text } from "@chakra-ui/layout";
 import GradientLayout from "../components/gradientLayout";
 import prisma from "../lib/prisma";
 
@@ -13,7 +14,23 @@ const Home = ({ artists }) => {
       description={"15 public playlists"}
       roundImage
     >
-      <div>home page</div>
+      <Box color={"white"}>
+        <Box>
+          <Text>
+            Top artists this month
+          </Text>
+          <Text>
+            Only visible to you
+          </Text>
+        </Box>
+        <Flex>
+          {artists.map(artist => (
+            <Text>
+              {artist.name}
+            </Text>
+          ))}
+        </Flex>
+      </Box>
     </GradientLayout>
   );
 };
