@@ -10,7 +10,7 @@ const Home = ({ artists }) => {
 
   return (
     <GradientLayout
-      color={"purple"}
+      color={"gray"}
       image={
         "https://dl.dropboxusercontent.com/s/bgiv0ssz3xpotz9/peep.png?dl=0"
       }
