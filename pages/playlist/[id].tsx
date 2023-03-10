@@ -23,8 +23,15 @@ const Playlist = ({ playlist }) => {
   const color = getBGColor(playlist.id);
 
   return (
-    <GradientLayout color={color} roundImage={false} title={playlist.name} subtitle="playlist" description={`${playlist.songs.length} songs`} image={`https://picsum.photos/400?random=${playlist.id}`}>
-      <SongsTable songs={undefined} />
+    <GradientLayout
+      color={color}
+      roundImage={false}
+      title={playlist.name}
+      subtitle="playlist"
+      description={`${playlist.songs.length} songs`}
+      image={`https://picsum.photos/400?random=${playlist.id}`}
+    >
+      <SongsTable songs={playlist.songs} />
     </GradientLayout>
   );
 };
