@@ -4,7 +4,7 @@ import { Box, Center, Button, ButtonGroup, IconButton, Flex, Text, RangeSlider, 
 import { MdOutlinePauseCircleFilled, MdOutlinePlayCircleFilled, MdOutlineRepeat, MdShuffle, MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { useState } from "react";
 
-export const Player = ({songs, activeSongs}) => {
+export const Player = ({songs, activeSong}) => {
 
   const [playing, setPlaying] = useState(true)
   const [index, setIndex] = useState(0)
@@ -28,7 +28,7 @@ export const Player = ({songs, activeSongs}) => {
   return (
     <Box>
       <Box>
-        <ReactHowler playing={playing} src={activeSongs?.url} />
+        <ReactHowler playing={playing} src={activeSong?.url} />
       </Box>
       <Center color={"gray.600"}>
         <ButtonGroup>
