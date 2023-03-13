@@ -34,7 +34,15 @@ export const Player = ({songs, activeSong}) => {
 
   const nextSong = () => {
     setIndex((state) => {
-      return state ? state + 1 : songs.length - 1
+      if (shuffle) {
+        const next = Math.floor(Math.random() * songs.length)
+        if (next === state) {
+          return nextSong()
+        }
+        return next
+      } else {
+        return state === songs.length - 1 ? 0 : state + 1
+      }
     })
   }
 
@@ -60,6 +68,7 @@ export const Player = ({songs, activeSong}) => {
             aria-label="previous"
             fontSize={"24px"}
             icon={<MdSkipPrevious />}
+            onClick={prevSong}
           />
           {playing ? (
           <IconButton
@@ -88,6 +97,7 @@ export const Player = ({songs, activeSong}) => {
             aria-label="next"
             fontSize={"24px"}
             icon={<MdSkipNext />}
+            onClick={nextSong}
           />
           <IconButton
             outline={"none"}
