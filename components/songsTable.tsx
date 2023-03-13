@@ -49,7 +49,6 @@ export const SongsTable = ({ songs }) => {
                   },
                 }}
                 key={song.id}
-                cursor={"pointer"}
                 onClick={() => handlePlay(song)}
               >
                 <Td>{i + 1}</Td>
