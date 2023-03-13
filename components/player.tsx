@@ -2,7 +2,7 @@ import ReactHowler from "react-howler";
 import { useStoreActions } from "easy-peasy";
 import { Box, Center, Button, ButtonGroup, IconButton, Flex, Text, RangeSlider, RangeSliderTrack, RangeSliderFilledTrack, RangeSliderThumb } from "@chakra-ui/react";
 import { MdOutlinePauseCircleFilled, MdOutlinePlayCircleFilled, MdOutlineRepeat, MdShuffle, MdSkipNext, MdSkipPrevious } from "react-icons/md";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export const Player = ({songs, activeSong}) => {
 
@@ -12,6 +12,7 @@ export const Player = ({songs, activeSong}) => {
   const [repeat, setRepeat] = useState(false)
   const [shuffle, setShuffle] = useState(false)
   const [duration, setDuration] = useState(0.0)
+  const soundRef = useRef(null)
 
   const setPlayState = (value) => {
     setPlaying(value)
@@ -25,10 +26,22 @@ export const Player = ({songs, activeSong}) => {
     setRepeat((state) => !state)
   }
 
+  const prevSong = () => {
+    setIndex((state) => {
+      return state ? state - 1 : songs.length - 1
+    })
+  }
+
+  const nextSong = () => {
+    setIndex((state) => {
+      return state ? state + 1 : songs.length - 1
+    })
+  }
+
   return (
     <Box>
       <Box>
-        <ReactHowler playing={playing} src={activeSong?.url} />
+        <ReactHowler playing={playing} src={activeSong?.url} ref={soundRef} />
       </Box>
       <Center color={"gray.600"}>
         <ButtonGroup>
