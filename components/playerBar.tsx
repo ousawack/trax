@@ -12,7 +12,7 @@ export const PlayerBar = () => {
       <Flex align={"center"}>
         {activeSong ? (
           <Box padding={"20px"} color="white" width={"30%"}>
-          <Text fontSize={"small"} fontWeight="semibold">[activeSong.name]</Text>
+          <Text fontSize={"small"} fontWeight="semibold">{activeSong.name}</Text>
           <Text fontSize={"2xs"}>{activeSong.artist.name}</Text>
         </Box>
         ) : null}
